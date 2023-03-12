@@ -26,7 +26,7 @@ function App() {
     if(countriesData.length > 0) return;
     
     try {
-      const res = await axios.get('/test.json')
+      const res = await axios.get('https://restcountries.com/v2/all?fields=name,region,area')
       setCountriesData(res.data)
       setIsFetchingData(false);
     } catch(error) {
