@@ -44,7 +44,7 @@ const StateHolder: React.FC<StateHolderProps> = ({countriesData, isFetchingData}
   }, [partitionedList, currentPage]);
 
   return (
-    <main>
+    <>
       <GroupMenu 
         countriesData={countriesData}
         rowsPerPage={rowsPerPage}
@@ -72,7 +72,7 @@ const StateHolder: React.FC<StateHolderProps> = ({countriesData, isFetchingData}
           }
         </Box>
       </Container>
-    </main>
+    </>
   )
 }
 
