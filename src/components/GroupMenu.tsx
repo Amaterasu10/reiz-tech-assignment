@@ -47,7 +47,7 @@ const GroupMenu: React.FC<GroupMenuProps> = ({
         <Tooltip label='Prev Page'>
           <Button 
             rounded='full' 
-            px='10' 
+            px={[2, 3, 4]}
             bg='green.300'
             isDisabled={currentPage === 1 ? true : false}
             onClick={
@@ -63,7 +63,7 @@ const GroupMenu: React.FC<GroupMenuProps> = ({
         <Tooltip label='Next Page'>
           <Button 
             rounded='full' 
-            px='10' 
+            px={[2, 3, 4]}
             bg='green.300' 
             isDisabled={currentPage == totalPageCount ? true : false}
             onClick={
@@ -82,9 +82,9 @@ const GroupMenu: React.FC<GroupMenuProps> = ({
       
       <HStack px='2.5' py='1.5'>
         
-        <Menu>
+        <Menu flip preventOverflow>
           <Tooltip label='Sort Name'>
-            <MenuButton as={Button} rounded='full' variant='ghost'>
+            <MenuButton as={Button} rounded='full' px={[1, 2, 3]} variant='ghost'>
               <Icon as={CgSortAz} boxSize={10}></Icon>
             </MenuButton>
           </Tooltip>
@@ -145,9 +145,14 @@ const GroupMenu: React.FC<GroupMenuProps> = ({
           </MenuList>
         </Menu>
         
-        <Menu>
+        <Menu flip preventOverflow>
           <Tooltip label='Available Actions'>
-            <MenuButton as={Button} rounded='full' px='10' bg='green.300'>
+            <MenuButton 
+              as={Button} 
+              rounded='full' 
+              px={[2, 3, 4]} 
+              bg='green.300'
+            >
               Actions
             </MenuButton>
           </Tooltip>
@@ -167,45 +172,50 @@ const GroupMenu: React.FC<GroupMenuProps> = ({
               }
             >Reset</MenuItem>
 
-            <MenuItem 
-              onClick={
-                ()=> {
-                  const lithuania: PartialCountryData| undefined = countriesData
-                    .find(country => country.name === 'Lithuania')
+            <MenuGroup title='Filter'>
+              <MenuItem 
+                onClick={
+                  ()=> {
+                    const lithuania: PartialCountryData| undefined = countriesData
+                      .find(country => country.name === 'Lithuania')
 
-                  const smallerThanLithuania = [...countriesData]
-                    .filter(
-                      country => (country?.area ?? 0) < (lithuania?.area ?? 0)
-                    )
+                    const smallerThanLithuania = [...countriesData]
+                      .filter(
+                        country => (country?.area ?? 0) < (lithuania?.area ?? 0)
+                      )
 
-                  const partitionedList = arrayPartitioner(smallerThanLithuania, rowsPerPage)
+                    const partitionedList = arrayPartitioner(smallerThanLithuania, rowsPerPage)
 
-                  setCurrentPage(1)
+                    setCurrentPage(1)
 
-                  setTotalPageCount(partitionedList.length)
+                    setTotalPageCount(partitionedList.length)
 
-                  setPartitionedList(partitionedList)
+                    setPartitionedList(partitionedList)
+                  }
                 }
-              }
-            >Filter countries that are smaller than Lithuania by area.</MenuItem>
+              >
+                Countries smaller than Lithuania
+              </MenuItem>
 
-            <MenuItem 
-              onClick={
-                ()=> {
-                  const oceaniaRegion = countriesData
-                    .filter(country => country.region === 'Oceania')
+              <MenuItem 
+                onClick={
+                  ()=> {
+                    const oceaniaRegion = countriesData
+                      .filter(country => country.region === 'Oceania')
 
-                  const partitionedList = arrayPartitioner(oceaniaRegion, rowsPerPage)
+                    const partitionedList = arrayPartitioner(oceaniaRegion, rowsPerPage)
 
-                  setCurrentPage(1)
+                    setCurrentPage(1)
 
-                  setTotalPageCount(partitionedList.length)
+                    setTotalPageCount(partitionedList.length)
 
-                  setPartitionedList(partitionedList)
+                    setPartitionedList(partitionedList)
+                  }
                 }
-              }
-            >Filter countries that are in “Oceania” region.</MenuItem>
-
+              >
+                Countries in Oceania region
+              </MenuItem>
+            </MenuGroup>
           </MenuList>
         </Menu>
       </HStack>
