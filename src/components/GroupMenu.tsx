@@ -89,7 +89,7 @@ const GroupMenu: React.FC<GroupMenuProps> = ({
             </MenuButton>
           </Tooltip>
           <MenuList>
-            <MenuGroup title='Current Page Order'>
+            <MenuGroup title='Current Page'>
               <MenuItem
                 onClick={
                   ()=> {
@@ -110,7 +110,7 @@ const GroupMenu: React.FC<GroupMenuProps> = ({
               >Descending</MenuItem>
             </MenuGroup>
 
-            <MenuGroup title='Full Data Order'>
+            <MenuGroup title='Full List'>
               <MenuItem 
                 onClick={
                   ()=> {
