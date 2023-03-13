@@ -28,9 +28,11 @@ const DataTable: React.FC<DataTableProps> = ({
         css={{
           '&::-webkit-scrollbar': {
             width: '0.5rem',
+            height: '0.5rem',
           },
           '&::-webkit-scrollbar-track': {
             width: '1rem',
+            height: '1rem',
           },
           '&::-webkit-scrollbar-thumb': {
             background: '#9ae6b4',
