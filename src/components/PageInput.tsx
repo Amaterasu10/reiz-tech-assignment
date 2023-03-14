@@ -4,7 +4,7 @@ import {
   NumberInputField, 
   Box
 } from '@chakra-ui/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { PageInputProps } from '../types';
 
@@ -14,7 +14,16 @@ const PageInput: React.FC<PageInputProps> = ({
   setCurrentPage
 }) => {
 
-  const [inputValue, setInputValue] = useState(currentPage)
+  /*
+    added so that users can see what they're typing before the input automatically sets its
+    value equal to the current page
+  */
+ 
+  const [inputValue, setInputValue] = useState<number>(currentPage)
+
+  useEffect(() => {
+    setInputValue(currentPage)
+  }, [currentPage])
 
   return (
     <Box>
