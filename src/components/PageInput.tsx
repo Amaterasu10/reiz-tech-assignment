@@ -4,6 +4,8 @@ import {
   NumberInputField, 
   Box
 } from '@chakra-ui/react';
+import { useState } from 'react';
+
 import { PageInputProps } from '../types';
 
 const PageInput: React.FC<PageInputProps> = ({ 
@@ -11,6 +13,8 @@ const PageInput: React.FC<PageInputProps> = ({
   currentPage, 
   setCurrentPage
 }) => {
+
+  const [inputValue, setInputValue] = useState(currentPage)
 
   return (
     <Box>
