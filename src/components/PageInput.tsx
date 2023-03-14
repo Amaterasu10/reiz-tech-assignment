@@ -21,7 +21,6 @@ const PageInput: React.FC<PageInputProps> = ({
           min={1}
           max={totalPageCount}
           inputMode="numeric"
-          keepWithinRange={false}
           onChange={
             (valueAsString, valueAsNumber:number)=> {
               if(valueAsNumber < 1) return setCurrentPage(1)
