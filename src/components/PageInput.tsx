@@ -36,10 +36,19 @@ const PageInput: React.FC<PageInputProps> = ({
           inputMode="numeric"
           onChange={
             (valueAsString, valueAsNumber:number)=> {
+              
               setInputValue(valueAsNumber)
-              if(valueAsNumber < 1) return setCurrentPage(1)
-              if(valueAsNumber > totalPageCount) return setCurrentPage(totalPageCount)
-              if(!Number.isNaN(valueAsNumber)) return setCurrentPage(valueAsNumber)
+
+              setCurrentPage(() => {
+
+                if(valueAsNumber < 1) return 1
+
+                if(valueAsNumber > totalPageCount) return totalPageCount
+
+                if(!Number.isNaN(valueAsNumber)) return valueAsNumber
+                
+                return currentPage
+              })
             }
           }
           value={inputValue}
