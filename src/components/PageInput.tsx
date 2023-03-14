@@ -37,7 +37,13 @@ const PageInput: React.FC<PageInputProps> = ({
           onChange={
             (valueAsString, valueAsNumber:number)=> {
               
-              setInputValue(valueAsNumber)
+              setInputValue(() => {
+                if(!Number.isNaN(valueAsNumber)) return valueAsNumber
+
+                if(valueAsNumber > totalPageCount) return totalPageCount
+
+                return 0
+              })
 
               setCurrentPage(() => {
 
@@ -51,7 +57,11 @@ const PageInput: React.FC<PageInputProps> = ({
               })
             }
           }
-          value={inputValue}
+          value={inputValue === 0 ? '' : currentPage }
+          onBlur={()=> {
+            if(inputValue !== 0) return
+            setInputValue(currentPage)
+          }}
         >
           <NumberInputField 
             px={0}
