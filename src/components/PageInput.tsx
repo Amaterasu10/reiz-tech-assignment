@@ -27,13 +27,16 @@ const PageInput: React.FC<PageInputProps> = ({
           inputMode="numeric"
           onChange={
             (valueAsString, valueAsNumber:number)=> {
+              setInputValue(valueAsNumber)
               if(valueAsNumber < 1) return setCurrentPage(1)
               if(valueAsNumber > totalPageCount) return setCurrentPage(totalPageCount)
               if(!Number.isNaN(valueAsNumber)) return setCurrentPage(valueAsNumber)
             }
           }
+          value={inputValue}
         >
           <NumberInputField 
+            px={0}
             textAlign='center' 
             _focusVisible={{borderColor: '#68d391' }}
           />
