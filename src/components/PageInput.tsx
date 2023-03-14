@@ -28,7 +28,6 @@ const PageInput: React.FC<PageInputProps> = ({
               if(!Number.isNaN(valueAsNumber)) return setCurrentPage(valueAsNumber)
             }
           }
-          value={currentPage}
         >
           <NumberInputField 
             textAlign='center' 
