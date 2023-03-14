@@ -41,7 +41,7 @@ function App() {
         <Container maxW='full' bg='green.200'>
           <Box p="2.5">
             <nav>
-              <Heading as='h1'>List of Countries</Heading>
+              <Heading as='h1'>ReizTech: List of Countries</Heading>
             </nav>
           </Box>
         </Container>
